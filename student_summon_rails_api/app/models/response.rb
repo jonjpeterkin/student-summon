@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  status     :string
-#  type       :string
+#  reason     :string
 #  call_id    :integer
 #  student_id :integer
 #  teacher_id :integer

@@ -19,11 +19,13 @@ rooms = Room.create([
 students = Student.create([
 	{first_name: "Joey", last_name: "Slick", room: rooms[0]},
 	{first_name: "Lizzy", last_name: "Lilac", room: rooms[1]},
+	{first_name: "Bobby", last_name: "Bighead", room: rooms[3]},
 	{first_name: "Sammy", last_name: "Obama", room: rooms[4]}
 	])
 
 users = User.create([
 	{job: "specialist", title: "Ms.", first_name: "Nancy", last_name: "Jacobs", room: rooms[4]},
+	{job: "specialist", title: "Ms.", first_name: "Lindey", last_name: "Graham", room: rooms[2]},
 	{job: "teacher", title: "Mr.", first_name: "Lev", last_name: "Moscow", room: rooms[0]},
 	{job: "teacher", title: "Mr.", first_name: "John", last_name: "Metelsky", room: rooms[1]}
 	])

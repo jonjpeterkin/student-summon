@@ -21,5 +21,8 @@ class User < ApplicationRecord
   has_many :responses, inverse_of: "teacher", foreign_key: "teacher_id"
   has_and_belongs_to_many :students, inverse_of: "specialist", association_foreign_key: "specialist_id"
 
+  scope :specialists, -> { where job: "specialist" }
+  scope :teachers, -> { where job: "teacher" }
+
   # has_secure_password
 end

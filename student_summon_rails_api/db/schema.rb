@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20170801200246) do
 
   create_table "calls", force: :cascade do |t|
     t.string "description"
+    t.datetime "time_for"
     t.bigint "specialist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -30,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170801200246) do
 
   create_table "responses", force: :cascade do |t|
     t.string "status"
-    t.string "type"
+    t.string "reason"
     t.bigint "call_id"
     t.bigint "student_id"
     t.bigint "teacher_id"
