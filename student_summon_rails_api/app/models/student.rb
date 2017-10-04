@@ -17,4 +17,15 @@ class Student < ApplicationRecord
 	has_and_belongs_to_many :calls
 	has_many :responses
 	has_and_belongs_to_many :specialists, class_name: "User"
+
+	def self.format(students)
+		students = Array(students).map do |student|
+			attrs = student.attributes
+			attrs.merge({
+				room: student.room.name,
+				name: "#{student.first_name} #{student.last_name}"
+			})
+		end
+		students[1] ? students : students[0]
+	end
 end

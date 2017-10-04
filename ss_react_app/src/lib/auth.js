@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-// import { browserHistory } from 'react-router'
+import React, { Component } from 'react'
+import history from '../stores/history'
 import { connect } from 'react-redux'
 
 export default function auth(ConnectedComponent){
   class AuthorizedComponent extends Component {
     componentWillMount(){
       if(!this.props.currentUser && !localStorage.getItem('jwt')){
-        browserHistory.push('/login')
+        history.push('/login')
       }
     }
     componentWillReceiveProps(){
       if(!this.props.currentUser && !localStorage.getItem('jwt')){
-        browserHistory.push('/login')
+        history.push('/login')
       }
     }
     render(){
@@ -20,7 +20,7 @@ export default function auth(ConnectedComponent){
   }
   function mapStateToProps(state){
     return { currentUser: state.users.currentUser }
-    // return { currentUser: state.users.currentUser, browserHistory: browserHistory }
+    // return { currentUser: state.users.currentUser, history: history }
   }
   return connect(mapStateToProps)(AuthorizedComponent)
 }

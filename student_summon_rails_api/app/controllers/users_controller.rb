@@ -1,9 +1,17 @@
 class UsersController < ApplicationController
-  # skip_before_action :authenticate_user, only: [:create]
+  skip_before_action :authenticate_user, only: [:create]
 
   def show
     user = current_user
-    render json: {userId: user.id, username: user.username, email: user.email}
+    render json: {
+      user_id: user.id,
+      email: user.email,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      title: user.title,
+      job: user.job,
+      roomId: user.room.id,
+    }
   end
 
   def create
@@ -33,7 +41,7 @@ class UsersController < ApplicationController
   private
 
   def auth_params
-    params.require(:auth).permit(:email, :username, :password)
+    params.require(:auth).permit(:email, :password)
   end
 
   def edit_params

@@ -1,25 +1,66 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { Collapse, Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap'
+import logout from '../actions/logout'
 
 class Header extends Component {
 
-  render(){
+  handleLogout(event){
+    event.preventDefault()
+    this.props.logout()
+  }
+
+  loginToggle() {
+    if(this.props.currentUser) {
+      return(
+        <Nav className="ml-auto" navbar>
+          <NavItem>
+            <NavLink tag={Link} to="/calls">Calls</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={Link} to="/students">Students</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={Link} to="#" onClick={this.handleLogout.bind(this)}>Logout</NavLink>
+          </NavItem>
+        </Nav>
+      )
+    } else {
+      return(
+        <Nav className="ml-auto" navbar>
+          <NavItem>
+            <NavLink tag={Link} to="/login">Login</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={Link} to="#">Sign Up</NavLink>
+          </NavItem>
+        </Nav>
+      )
+    }
+  }
+
+  render() {
 		return (
 			<div>
-				<nav>
-          <Link to='/'>HOME</Link>
-          . . . . .
-          <Link to='/login'>LOGIN</Link>
-        </nav>
+				<Navbar color='faded' light toggleable>
+          <NavbarBrand tag={Link} to='/'>Student Summon</NavbarBrand>
+          <Collapse isOpen={true} navbar>
+            {this.loginToggle()}
+          </Collapse>
+        </Navbar>
 			</div>
 		)
   }
 }
 
-export default Header
-// function mapStateToProps(state) {
-//   return {currentUser: state.users.currentUser}
-// }
+function mapStateToProps(state) {
+  return {currentUser: state.users.currentUser}
+}
 
-// export default connect(mapStateToProps)(Home)
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ logout }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

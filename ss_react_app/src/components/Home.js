@@ -5,7 +5,7 @@ class Home extends Component {
 
 	welcome(){
     if(this.props.currentUser) {
-      return <h2>Welcome, {this.props.currentUser.username}!</h2>
+      return <h2>Welcome, {this.props.currentUser.title} {this.props.currentUser.lastName}!</h2>
     } else if(!this.props.currentUser) {
       return <h2>Welcome!</h2>
     }
@@ -14,10 +14,9 @@ class Home extends Component {
 		return (
 			<div>
         <div className="App-header">
-          <h2>Welcome to Hell</h2>
+          {this.welcome()}
         </div>
         <p className="App-intro">
-          God Bless <code>Us.All</code>
         </p>
 			</div>
 		)
