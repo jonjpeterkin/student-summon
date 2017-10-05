@@ -16,9 +16,8 @@ export default function getUserInfo() {
 					{currentUser: {
 						id: response.user_id,
 						email: response.email,
-						firstName: response.first_name,
-						lastName: response.last_name,
-						title: response.title,
+						fullName: response.full_name,
+						profName: response.prof_name,
 						job: response.job
 					}}
 				})

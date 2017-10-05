@@ -31,7 +31,7 @@ class ShowStudents extends Component {
   	let rows = this.props.students.map((student) => {
   		return(
   			<tr onClick={this.handleStudentEdit.bind(this, student)}>
-  				<td>{student.first_name} {student.last_name}</td>
+  				<td>{student.name}</td>
   				<td>{student.room}</td>
   			</tr>
   		)

@@ -57,8 +57,7 @@ ActiveRecord::Schema.define(version: 20170801200246) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
+    t.string "name"
     t.bigint "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -72,9 +71,8 @@ ActiveRecord::Schema.define(version: 20170801200246) do
 
   create_table "users", force: :cascade do |t|
     t.string "job"
-    t.string "title"
-    t.string "first_name"
-    t.string "last_name"
+    t.string "prof_name"
+    t.string "full_name"
     t.string "email"
     t.string "password_digest"
     t.bigint "room_id"

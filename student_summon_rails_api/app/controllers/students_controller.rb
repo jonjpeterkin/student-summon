@@ -7,12 +7,11 @@ class StudentsController < ApplicationController
 
 	def create
 		school = current_user.school
-		fn_ln = [:first_name, :last_name].zip(student_params[:name].split).to_h
 		student = Student.create_with({
 				school: school,
 				room: Room.find_or_create_by({school: school, name: student_params[:room]})
 			}).includes(:school).where(schools: {id: school.id})
-			.find_or_create_by(fn_ln)
+			.find_or_create_by({name: student_params[:name]})
 		if student.save
 			current_user.students << student
 			render json: {student: Student.format(student)}
@@ -26,9 +25,8 @@ class StudentsController < ApplicationController
 
 	def update
 		student = Student.find(student_params[:id])
-		fn_ln = [:first_name, :last_name].zip(student_params[:name].split).to_h
 		room = Room.find_or_create_by({school: current_user.school, name: student_params[:room]})
-		if student.update(**fn_ln, room: room)
+		if student.update({name: student_params[:name], room: room})
 			render json: {student: Student.format(student)}
 		else
 			render json: {error: 'Student update failed'}

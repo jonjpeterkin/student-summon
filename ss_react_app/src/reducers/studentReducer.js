@@ -1,4 +1,5 @@
 const defaultState = {
+	students: []
 }
 
 export default function students(state = defaultState, action) {
@@ -9,7 +10,10 @@ export default function students(state = defaultState, action) {
 				students: action.payload
 			}
 		case "CREATE_STUDENT":
-			return {...state, students: state.students.concat(action.payload)}
+			return {
+				...state,
+				students: state.students.concat(action.payload)
+			}
 		case "UPDATE_STUDENT":
 			return {
 				...state,

@@ -18,7 +18,7 @@ class Call < ApplicationRecord
   has_many :responses
 
   def self.format(calls)
-  	calls = Array(calls).map do |call|
+  	fmtd_calls = Array(calls).map do |call|
 			attrs = call.attributes
 			students = Student.format(call.students)
 			attrs.merge({
@@ -26,7 +26,7 @@ class Call < ApplicationRecord
         origin: call.origin.name
       })
   	end
-  	calls[1] ? calls : calls[0]
+  	calls.is_a?(Enumerable) ? fmtd_calls : fmtd_calls[0]
   end
 
   private

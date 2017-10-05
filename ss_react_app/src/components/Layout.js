@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Header from './Header'
 import Login from './Login'
+import Signup from './Signup'
 import Home from './Home'
 import ShowStudents from './students/ShowStudents'
 import ShowCalls from './calls/ShowCalls'
@@ -33,6 +34,7 @@ class Layout extends Component {
             <Route exact path='/login' component={Login} />
             <Route exact path='/students' component={ShowStudents} />
 						<Route exact path='/calls' component={ShowCalls} />
+            <Route exact path='/signup' component={Signup} />
 					</Switch>
         </div>
       </div>

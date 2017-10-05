@@ -19,13 +19,12 @@ class Student < ApplicationRecord
 	has_and_belongs_to_many :specialists, class_name: "User"
 
 	def self.format(students)
-		students = Array(students).map do |student|
+		fmtd_students = Array(students).map do |student|
 			attrs = student.attributes
 			attrs.merge({
-				room: student.room.name,
-				name: "#{student.first_name} #{student.last_name}"
+				room: student.room.name
 			})
 		end
-		students[1] ? students : students[0]
+		students.is_a?(Enumerable) ? fmtd_students : fmtd_students[0]
 	end
 end
