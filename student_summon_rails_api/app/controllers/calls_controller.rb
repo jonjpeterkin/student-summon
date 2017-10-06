@@ -10,7 +10,7 @@ class CallsController < ApplicationController
 		call = Call.new(
 			time_for: time_for,
 			description: call_params[:description],
-			students: call_params[:students]
+			students: Student.find(call_params[:students])
 		)
 		call.specialist = current_user
 		if call.save

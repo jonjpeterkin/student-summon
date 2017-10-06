@@ -5,3 +5,13 @@
 	margin-top: 20px;
 	padding: 10px;
 }
+
+#StudentPicker {
+	padding: 20px;
+	margin-bottom: 0;
+}
+
+#PickerTable {
+	padding: 10px;
+	margin-bottom: 0;
+}

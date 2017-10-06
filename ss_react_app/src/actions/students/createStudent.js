@@ -2,7 +2,6 @@ import $ from 'jquery'
 
 export default function createStudent(formData) {
 	return function(dispatch) {
-		debugger
 		$.ajax({
 			type: 'POST',
 			url: 'http://localhost:3000/api/students',

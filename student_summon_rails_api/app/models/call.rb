@@ -23,13 +23,12 @@ class Call < ApplicationRecord
 			students = Student.format(call.students)
 			attrs.merge({
         students: students,
-        origin: call.origin.name
+        origin: call.origin.name,
+        time_for: call.fmt_time_out
       })
   	end
   	calls.is_a?(Enumerable) ? fmtd_calls : fmtd_calls[0]
   end
-
-  private
 
   def self.fmt_time_in(time_for)
     hour = time_for.split(':')[0]
@@ -38,8 +37,8 @@ class Call < ApplicationRecord
     Time.new(now.year, now.month, now.mday, hour, minute, 0)
   end
 
-  def fmt_time_out(time)
-
+  def fmt_time_out
+    self.time_for.localtime.strftime('%-m/%-d/%Y %-I:%M %p')
   end
 
 

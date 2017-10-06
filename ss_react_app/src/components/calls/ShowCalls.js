@@ -21,9 +21,10 @@ class ShowCalls extends Component {
   	let rows = this.props.calls.map((call) => {
   		return(
   			<tr>
-  				<td>{call.timeFor}</td>
+  				<td>{call.time_for.split(' ')[0]}</td>
+  				<td>{call.time_for.split(' ', 2)[1]}</td>
   				<td>{call.origin}</td>
-  				<td>{}</td>
+  				<td>{call.students.map((student) => <div>{student.name}</div>)}</td>
   			</tr>
   		)
   	})
@@ -41,7 +42,8 @@ class ShowCalls extends Component {
 				<Table hover>
 					<thead>
 						<tr>
-							<th>Appt Time</th>
+							<th>Date</th>
+							<th>Time</th>
 							<th>Room</th>
 							<th>Students</th>
 						</tr>

@@ -6,7 +6,7 @@ import editStudent from '../../actions/students/editStudent'
 import deleteStudent from '../../actions/students/deleteStudent'
 import toggleModal from '../../actions/modals/toggleModal'
 import updateModal from '../../actions/modals/updateModal'
-import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
 
 class EditStudent extends Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class EditStudent extends Component {
 	render() {
 		return(
 			<div>
-        <Modal isOpen={this.props.modal.toggle} toggle={this.toggle} className="EditStudent">
+        <Modal size="50px" isOpen={this.props.modal.toggle} toggle={this.toggle} className="EditStudent">
           <ModalHeader toggle={this.toggle}>Edit a Student</ModalHeader>
           <Form onSubmit={this.handleSubmit.bind(this)}>
 	          <ModalBody>
