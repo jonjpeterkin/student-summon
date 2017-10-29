@@ -7,8 +7,9 @@ Rails.application.routes.draw do
 	  end
   	get '/calls', to: 'calls#index'
 	  patch '/students', to: 'students#update'
+	  patch '/users', to: 'users#update'
 
-	  resources :users, only: [:create, :show, :update, :destroy]
+	  resources :users, only: [:create, :show, :destroy]
 	  resources :students, only: [:index, :create, :show, :destroy]
 	  resources :calls, only: [:index, :create, :show, :update, :destroy]
 	end

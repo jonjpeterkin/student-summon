@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import auth from '../../lib/auth'
 import getStudents from '../../actions/students/getStudents'
-import updateModal from '../../actions/modals/updateModal'
-import toggleModal from '../../actions/modals/toggleModal'
+import updateLocalState from '../../actions/local-state/updateLocalState'
+import toggleModal from '../../actions/local-state/toggleModal'
 import CreateStudent from './CreateStudent.js'
 import EditStudent from './EditStudent.js'
 import { Table, Button } from 'reactstrap'
@@ -16,8 +16,8 @@ class ShowStudents extends Component {
 	}
 
 	handleStudentEdit(student) {
-		this.props.toggleModal('editStudent')
-		this.props.updateModal('editStudent',
+		this.props.toggleModal('EditStudent')
+		this.props.updateLocalState('EditStudent',
 			{
 				id: student.id,
 				name: student.name,
@@ -56,7 +56,7 @@ class ShowStudents extends Component {
 					</thead>
 					{this.listStudents()}
 				</Table>
-        <Button color="success" onClick={this.props.toggleModal.bind(this, 'createStudent')}>+ Add a Student</Button>
+        <Button color="success" onClick={this.props.toggleModal.bind(this, 'CreateStudent')}>+ Add a Student</Button>
 				<EditStudent />
 				<CreateStudent />
 			</div>
@@ -72,12 +72,12 @@ function mapStateToProps(state) {
 	return {
 		currentUser: state.users.currentUser,
 		students: state.students.students,
-		loading: state.loading.showStudents
+		loading: state.loading.ShowStudents
 	}
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ getStudents, updateModal, toggleModal }, dispatch)
+	return bindActionCreators({ getStudents, updateLocalState, toggleModal }, dispatch)
 }
 
 export default auth(connect(mapStateToProps, mapDispatchToProps)(ShowStudents))

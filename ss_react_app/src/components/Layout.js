@@ -6,9 +6,13 @@ import Header from './Header'
 import Login from './Login'
 import Signup from './Signup'
 import Home from './Home'
+import Profile from './users/Profile'
+import EditUser from './users/EditUser'
 import ShowStudents from './students/ShowStudents'
 import ShowCalls from './calls/ShowCalls'
 import getUserInfo from '../actions/users/getUserInfo'
+import SpecialistPortal from './SpecialistPortal'
+import TeacherPortal from './TeacherPortal'
 
 class Layout extends Component {
 
@@ -32,9 +36,9 @@ class Layout extends Component {
       		<Switch>
 						<Route exact path='/' component={Home} />
             <Route exact path='/login' component={Login} />
-            <Route exact path='/students' component={ShowStudents} />
-						<Route exact path='/calls' component={ShowCalls} />
             <Route exact path='/signup' component={Signup} />
+            <Route path='/spec' component={SpecialistPortal} />
+            <Route path='/teach' component={TeacherPortal} />
 					</Switch>
         </div>
       </div>

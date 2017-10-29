@@ -12,15 +12,32 @@ class Header extends Component {
     this.props.logout()
   }
 
-  loginToggle() {
-    if(this.props.currentUser) {
+  viewSwitch() {
+    if(this.props.currentUser && this.props.currentUser.job === 'specialist') {
       return(
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <NavLink tag={Link} to="/calls">Calls</NavLink>
+            <NavLink tag={Link} to="/spec/calls">Calls</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink tag={Link} to="/students">Students</NavLink>
+            <NavLink tag={Link} to="/spec/students">Students</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={Link} to="/spec/profile">Profile</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={Link} to="#" onClick={this.handleLogout.bind(this)}>Logout</NavLink>
+          </NavItem>
+        </Nav>
+      )
+    } else if(this.props.currentUser && this.props.currentUser.job === 'teacher') {
+      return(
+        <Nav className="ml-auto" navbar>
+          <NavItem>
+            <NavLink tag={Link} to="/teach/calls">Calls</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={Link} to="/teach/profile">Profile</NavLink>
           </NavItem>
           <NavItem>
             <NavLink tag={Link} to="#" onClick={this.handleLogout.bind(this)}>Logout</NavLink>
@@ -47,7 +64,7 @@ class Header extends Component {
 				<Navbar color='faded' light toggleable>
           <NavbarBrand tag={Link} to='/'>Student Summon</NavbarBrand>
           <Collapse isOpen={true} navbar>
-            {this.loginToggle()}
+            {this.viewSwitch()}
           </Collapse>
         </Navbar>
 			</div>

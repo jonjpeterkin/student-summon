@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       full_name: user.full_name,
       prof_name: user.prof_name,
       job: user.job,
-      roomId: user.room.id,
+      room_id: user.room.id,
     }
   end
 
@@ -30,12 +30,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    # user = current_user
-    # if user.update(edit_params)
-    #   render json: {user_id: user.id, username: user.username, email: user.email}
-    # else
-    #   render json: {message: "Account edit failed"}
-    # end
+    user = current_user
+    if user.update(edit_params)
+      render json: {
+        user_id: user.id,
+        email: user.email,
+        full_name: user.full_name,
+        prof_name: user.prof_name,
+        job: user.job,
+        room_id: user.room.id,
+      }
+    else
+      render json: {message: "Account edit failed"}
+    end
   end
 
   def destroy
@@ -54,7 +61,7 @@ class UsersController < ApplicationController
   end
 
   def edit_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :full_name, :prof_name, :job, :room_id)
   end
 
 end

@@ -4,13 +4,13 @@ import users from './userReducer'
 import students from './studentReducer'
 import calls from './callReducer'
 import loading from './loadingReducer'
-import modals from './modalReducer'
+import localState from './localStateReducer'
 
 const appReducer = combineReducers({
 	users,
 	students,
 	calls,
-	modals,
+	localState,
 	loading,
 	routing: routerReducer
 })

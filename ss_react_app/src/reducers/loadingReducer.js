@@ -1,6 +1,9 @@
 const default_state = {
-	showStudents: true,
-	showCalls: true
+	Home: true,
+	ShowStudents: true,
+	ShowCalls: true,
+	Profile: true,
+	EditUser: true
 }
 
 export default function loading(state = default_state, action){

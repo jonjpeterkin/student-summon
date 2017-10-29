@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import auth from '../../lib/auth'
 import getCalls from '../../actions/calls/getCalls'
 import getStudents from '../../actions/students/getStudents'
-import toggleModal from '../../actions/modals/toggleModal'
+import toggleModal from '../../actions/local-state/toggleModal'
 import CreateCall from './CreateCall'
 import { Button, Table } from 'reactstrap'
 
@@ -50,7 +50,7 @@ class ShowCalls extends Component {
 					</thead>
 					{this.listCalls()}
 				</Table>
-        <Button color="success" onClick={this.props.toggleModal.bind(this, 'createCall')}>+ New Call</Button>
+        <Button color="success" onClick={this.props.toggleModal.bind(this, 'CreateCall')}>+ New Call</Button>
 				<CreateCall />
 			</div>
 		) : <h3>LOADING...</h3> )
@@ -62,7 +62,7 @@ function mapStateToProps(state) {
 		currentUser: state.users.currentUser,
 		calls: state.calls.calls,
 		students: state.students.students,
-		loading: state.loading.showCalls
+		loading: state.loading.ShowCalls
 	}
 }
 

@@ -15,7 +15,7 @@ export default function login(formData) {
 			datatype: 'json'
 		}).done((response) => {
 			if(response.error){
-				console.log("ERROR")
+				console.log("UNAUTH")
 				history.push('/login')
 			} else {
 				history.push('/')

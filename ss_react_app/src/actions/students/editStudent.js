@@ -1,6 +1,6 @@
 import $ from 'jquery'
 
-export default function createStudents(formData) {
+export default function editStudent(formData) {
   return function(dispatch) {
     $.ajax({
       type: 'PATCH',

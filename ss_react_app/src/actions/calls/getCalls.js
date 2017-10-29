@@ -3,7 +3,7 @@ import setLoading from '../setLoading'
 
 export default function getCalls() {
 	return function(dispatch) {
-		dispatch(setLoading('showCalls', true))
+		dispatch(setLoading('ShowCalls', true))
 		$.ajax({
 			type: 'GET',
 			url: 'http://localhost:3000/api/calls',
@@ -16,7 +16,7 @@ export default function getCalls() {
 			} else {
 				dispatch({type: 'GET_CALLS', payload: response.calls})
 			}
-			dispatch(setLoading('showCalls', false))
+			dispatch(setLoading('ShowCalls', false))
 		})
 	}
 }
